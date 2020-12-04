@@ -14,5 +14,6 @@ Execute these commands to run the project:
 
 	git clone  [https://github.com/Chesstify/chesstify-backend.git]
 	cd chesstify-backend 
-	virtualenv venv
-	(venv) pip install -r requirements.txt
+	virtualenv [env]
+	source env/bin/activate
+	(env) pip install -r requirements.txt
