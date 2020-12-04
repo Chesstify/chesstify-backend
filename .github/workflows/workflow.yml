@@ -1,4 +1,4 @@
-name: Flask
+name: Main Workflow
 
 on:
   push:
@@ -29,8 +29,7 @@ jobs:
         
     - name: Linter
       run: |
-        pylint *.py
-        pylint tests/
+        pylint app
     - name: Run Tests
       run: |
         pytest
