@@ -6,13 +6,14 @@ from app.main.services.games_service import GamesService
 games_blueprint = Blueprint("games", __name__)
 
 DEFAULT_PAGE_SIZE = 100
+DEFAULT_PAGE_NUMBER = 0
 mode_query_params = ["blitz", "bullet", "rapid", "all"]
 
 
 @games_blueprint.route('/games/<string:username>', methods=['GET'])
 def get_games_by_username(username):
     mode_query_param = str.lower(request.args.get("mode", "all", type=str))
-    page_number_query_param = request.args.get("pageNumber", 0, type=int)
+    page_number_query_param = request.args.get("pageNumber", DEFAULT_PAGE_NUMBER, type=int)
     page_size_query_param = request.args.get("pageSize", DEFAULT_PAGE_SIZE, type=int)
     use_cache_query_param = request.args.get("useCache", False, type=bool)
     if mode_query_param is not None and mode_query_param not in mode_query_params:

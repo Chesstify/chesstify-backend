@@ -8,7 +8,7 @@ GAMES_ARCHIVE_URL = "https://api.chess.com/pub/player/{username}/games/archives"
 
 class GamesClient:
     def __init__(self):
-        requests_cache.install_cache('test_cache', backend='sqlite')
+        requests_cache.install_cache('games_cache', backend='sqlite')
 
     def get_all_games(self, username):
         requests_cache.clear()
