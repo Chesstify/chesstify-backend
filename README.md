@@ -31,19 +31,19 @@ Running the Application
 
 **[Windows]**
 
-	set FLASK_APP=main/chesstify.py
-	$env:FLASK_APP="main/chesstify.py"
+	set FLASK_APP=app/main/chesstify.py
+	$env:FLASK_APP="app/main/chesstify.py"
 	flask run
 	
 **[Mac]**
 
-	export FLASK_APP=main/chesstify.py
+	export FLASK_APP=app/main/chesstify.py
 	flask run
 
 
 You should then see the following output
 ```
-* Serving Flask app "main/chesstify.py"
+* Serving Flask app "app/main/chesstify.py"
 * Running on http://127.0.0.1:5000/
 ```
 

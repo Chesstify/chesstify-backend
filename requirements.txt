@@ -3,6 +3,10 @@
 
 #Core
 pylint==2.6.0
+requests==2.25.1
+requests-cache==0.5.2
+jsonpickle==1.4.2
+
 
 # Flask Framework
 Flask==1.1.2
@@ -10,7 +14,6 @@ Flask==1.1.2
 # Flask Packages
 Flask-Migrate==2.5.3
 Flask-Script==2.0.6
-Flask-SQLAlchemy==2.4.4
 Flask-Testing==0.8.0
 
 # Automated tests
