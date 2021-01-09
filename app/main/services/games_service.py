@@ -1,6 +1,6 @@
 import datetime
 
-from app.main.models.games import Game, Games
+from app.main.models.games import Game, Games, Rating
 from app.main.util.games_requests import GamesClient
 
 DATE_FORMAT_DD_MM_YYYY = "%d/%m/%Y"
@@ -13,14 +13,14 @@ RESULTS_TYPES = {
 class GamesService:
     @staticmethod
     def get_games(username, game_mode, page_number, page_size, use_cache):
-        api = GamesService.__games_from_api(username, use_cache)
-        games = [GamesService.__create_game(username, game) for game in api]
+        chess_dotcom_games = GamesService.__games_from_chess_dotcom(username, use_cache)
+        games = [GamesService.__create_game(username, game) for game in chess_dotcom_games]
         filtered_games = GamesService.__filter_games_by_game_mode(game_mode, games)
         paginated_games = GamesService.__paginate_games(filtered_games, page_number, page_size)
         return Games(username, game_mode, paginated_games, len(filtered_games))
 
     @staticmethod
-    def __games_from_api(username, use_cache):
+    def __games_from_chess_dotcom(username, use_cache):
         if use_cache:
             all_games_response = GamesClient().get_all_games_from_cache(username)
         else:
@@ -70,10 +70,7 @@ class GamesService:
     @staticmethod
     def __get_rating(game, position):
         rating = game[position]["rating"]
-        return {"rating": {
-            "total": rating,
-            "change": "-"
-        }}
+        return Rating(rating, "-")
 
     @staticmethod
     def __filter_games_by_game_mode(game_mode, games):
