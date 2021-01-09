@@ -17,7 +17,7 @@ class GamesService:
         games = [GamesService.__create_game(username, game) for game in chess_dotcom_games]
         filtered_games = GamesService.__filter_games_by_game_mode(game_mode, games)
         paginated_games = GamesService.__paginate_games(filtered_games, page_number, page_size)
-        return Games(username, game_mode, paginated_games, len(filtered_games))
+        return Games(username, game_mode.capitalize(), paginated_games, len(filtered_games))
 
     @staticmethod
     def __games_from_chess_dotcom(username, use_cache):
