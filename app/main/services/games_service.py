@@ -32,13 +32,13 @@ class GamesService:
     @staticmethod
     def __create_game(username, game):
         date = GamesService.__get_date(game)
-        mode = GamesService.__get_mode(game)
+        mode = GamesService.__get_mode(game).capitalize()
         position = GamesService.__get_position(game, username)
         opponent = GamesService.__get_opponent(game, position)
         result = GamesService.__get_result(game, position)
         rating = GamesService.__get_rating(game, position)
 
-        return Game(date, mode, position, opponent, result, rating)
+        return Game(date, mode, position.capitalize(), opponent, result, rating)
 
     @staticmethod
     def __get_date(game):
