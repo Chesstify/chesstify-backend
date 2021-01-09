@@ -15,3 +15,9 @@ class Game:
         self.opponent = opponent
         self.result = result
         self.rating = rating
+
+
+class Rating:
+    def __init__(self, total, change):
+        self.total = total
+        self.change = change
